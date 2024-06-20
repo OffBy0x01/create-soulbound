@@ -95,3 +95,16 @@ ItemEvents.entityInteracted(event =>{
 })
 
 const customRecipeHandler = (event, customRecipe) => event.custom(customRecipe)
+
+const tconstructUsingMaterial = (player, material) => {
+  // '{Damage:0,tic_broken:0b,tic_materials:["tconstruct:hepatizon","tconstruct:hepatizon","tconstruct:hepatizon","tconstruct:hepatizon"]
+  const nbtData = player.mainHandItem.nbt
+  const parts = nbtData?.tic_materials ?? []
+
+  for ( const part of parts) {
+    if (part === material) {
+      return true
+    }
+  }
+  return false
+}
